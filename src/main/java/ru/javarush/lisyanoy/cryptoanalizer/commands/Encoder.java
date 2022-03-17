@@ -25,6 +25,9 @@ public class Encoder implements Action {
         Path fileIncrypt = Paths.get(lineOut);
 
         int key = Integer.parseInt(parameters[2]);
+        if (key > Constants.alphabetList.size()) {
+            key = key % Constants.alphabetList.size();
+        }
 
         try {
             List<String> listFileSource = Files.readAllLines(fileTxt, UTF_8);

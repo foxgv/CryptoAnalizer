@@ -17,7 +17,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class Decoder implements Action {
     @Override
     public Result execute(String[] parameters) {
-        //TODO something do
 
         Scanner scannerOut = new Scanner(Constants.TXT_FOLDER + parameters[0]);
         String lineOut = scannerOut.nextLine();
@@ -27,6 +26,9 @@ public class Decoder implements Action {
         Path fileDecrypt = Paths.get(lineOut1);
 
         int key = Integer.parseInt(parameters[2]);
+        if (key > Constants.alphabetList.size()) {
+            key = key % Constants.alphabetList.size();
+        }
 
         try {
             List<String> listFileSource = Files.readAllLines(fileIncrypt, UTF_8);

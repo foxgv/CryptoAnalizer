@@ -1,15 +1,15 @@
 package ru.javarush.lisyanoy.cryptoanalizer.controllers;
 
 import ru.javarush.lisyanoy.cryptoanalizer.commands.Action;
+import ru.javarush.lisyanoy.cryptoanalizer.commands.BruteForce;
 import ru.javarush.lisyanoy.cryptoanalizer.commands.Decoder;
 import ru.javarush.lisyanoy.cryptoanalizer.commands.Encoder;
 import ru.javarush.lisyanoy.cryptoanalizer.exception.AppException;
 
-import java.util.Locale;
-
 public enum Actions {
     ENCODER(new Encoder()),
-    DECODER(new Decoder());
+    DECODER(new Decoder()),
+    BRUTEFORCE(new BruteForce());
 
     private final Action action;
 
