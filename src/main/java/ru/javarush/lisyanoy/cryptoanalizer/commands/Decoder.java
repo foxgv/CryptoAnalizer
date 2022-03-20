@@ -34,16 +34,7 @@ public class Decoder implements Action {
             List<String> listFileSource = Files.readAllLines(fileIncrypt, UTF_8);
             StringBuilder stringBuilder2 = new StringBuilder(String.valueOf(listFileSource));
             StringBuilder stringBuilder3 = new StringBuilder();
-            for (int i = 0; i < stringBuilder2.length(); i++) {
-                char ch2 = stringBuilder2.charAt(i);
-                if (Constants.alphabetList.contains(ch2)) {
-                    if ((Constants.alphabetList.indexOf(stringBuilder2.charAt(i)) - key) > -1) {
-                        stringBuilder3.append(Constants.alphabetList.get((Constants.alphabetList.indexOf(ch2)) - key));
-                    } else {
-                        stringBuilder3.append(Constants.alphabetList.get(((Constants.alphabetList.indexOf(ch2)) - key) + Constants.alphabetList.size()));
-                    }
-                }
-            }
+            decodeString(key, stringBuilder2, stringBuilder3);
             Files.writeString(fileDecrypt,stringBuilder3);
 
         } catch (IOException e) {
@@ -51,5 +42,18 @@ public class Decoder implements Action {
         }
 
         return new Result("decode all right", ResultCode.OK);
+    }
+
+    private void decodeString(int key, StringBuilder stringBuilder2, StringBuilder stringBuilder3) {
+        for (int i = 0; i < stringBuilder2.length(); i++) {
+            char ch2 = stringBuilder2.charAt(i);
+            if (Constants.alphabetList.contains(ch2)) {
+                if ((Constants.alphabetList.indexOf(stringBuilder2.charAt(i)) - key) > -1) {
+                    stringBuilder3.append(Constants.alphabetList.get((Constants.alphabetList.indexOf(ch2)) - key));
+                } else {
+                    stringBuilder3.append(Constants.alphabetList.get(((Constants.alphabetList.indexOf(ch2)) - key) + Constants.alphabetList.size()));
+                }
+            }
+        }
     }
 }

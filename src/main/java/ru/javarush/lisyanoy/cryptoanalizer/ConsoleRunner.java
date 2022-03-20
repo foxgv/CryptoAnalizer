@@ -13,7 +13,6 @@ public class ConsoleRunner {
         Application application = new Application();
         Result result = application.run(args);
         System.out.println(result);
-//        System.out.println(Constants.alphabetList);
 
     }
 }

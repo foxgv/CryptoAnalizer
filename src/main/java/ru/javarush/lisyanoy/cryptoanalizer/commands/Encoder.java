@@ -33,21 +33,7 @@ public class Encoder implements Action {
             List<String> listFileSource = Files.readAllLines(fileTxt, UTF_8);
             StringBuilder stringBuilder1 = new StringBuilder(String.valueOf(listFileSource));
             StringBuilder stringBuilder2 = new StringBuilder();
-            for (int i = 0; i < stringBuilder1.length(); i++) {
-                char ch1 = stringBuilder1.charAt(i);
-                if (Constants.alphabetList.contains(ch1)) {
-                    if ((Constants.alphabetList.indexOf(stringBuilder1.charAt(i)) + key) <
-                            Constants.alphabetList.size())
-                    {
-                        stringBuilder2.append(Constants.alphabetList.get((
-                                Constants.alphabetList.indexOf(ch1)) + key));
-                    } else {
-                        stringBuilder2.append(Constants.alphabetList.get((
-                                (Constants.alphabetList.indexOf(ch1)) + key) -
-                                Constants.alphabetList.size()));
-                    }
-                }
-            }
+            encodeString(key, stringBuilder1, stringBuilder2);
             Files.writeString(fileIncrypt,stringBuilder2);
 
         } catch (IOException e) {
@@ -55,5 +41,23 @@ public class Encoder implements Action {
         }
 
         return new Result("encode all right", ResultCode.OK);
+    }
+
+    private void encodeString(int key, StringBuilder stringBuilder1, StringBuilder stringBuilder2) {
+        for (int i = 0; i < stringBuilder1.length(); i++) {
+            char ch1 = stringBuilder1.charAt(i);
+            if (Constants.alphabetList.contains(ch1)) {
+                if ((Constants.alphabetList.indexOf(stringBuilder1.charAt(i)) + key) <
+                        Constants.alphabetList.size())
+                {
+                    stringBuilder2.append(Constants.alphabetList.get((
+                            Constants.alphabetList.indexOf(ch1)) + key));
+                } else {
+                    stringBuilder2.append(Constants.alphabetList.get((
+                            (Constants.alphabetList.indexOf(ch1)) + key) -
+                            Constants.alphabetList.size()));
+                }
+            }
+        }
     }
 }

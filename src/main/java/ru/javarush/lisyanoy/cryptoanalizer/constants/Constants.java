@@ -51,4 +51,11 @@ public class Constants {
         alphabetList.addAll(arrayList2);
         alphabetList.addAll(arrayList3);
     }
+
+    public final static ArrayList<Character> lowAlphabetList = new ArrayList<>();
+
+    static {
+        lowAlphabetList.addAll(arrayList2);
+        lowAlphabetList.addAll(arrayList3);
+    }
 }
