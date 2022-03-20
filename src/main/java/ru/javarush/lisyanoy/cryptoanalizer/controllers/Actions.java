@@ -4,10 +4,10 @@ import ru.javarush.lisyanoy.cryptoanalizer.commands.*;
 import ru.javarush.lisyanoy.cryptoanalizer.exception.AppException;
 
 public enum Actions {
-    ENCODER(new Encoder()),
-    DECODER(new Decoder()),
+    ENCODE(new Encoder()),
+    DECODE(new Decoder()),
     BRUTEFORCE(new BruteForce()),
-    STATANALYSIS(new StatAnalysis());
+    ANALYZE(new StatAnalysis());
 
     private final Action action;
 
